@@ -1,0 +1,99 @@
+{
+    "higijena": [
+        {
+            "id": 1,
+            "naziv": "Colgate",
+            "tip":"Pasta za zube",
+            "cena": "170"
+        },
+        {
+            "id": 2,
+            "naziv": "Rexona",
+            "tip":"Dezadorans",
+            "cena": "280"
+        },
+        {
+            "id": 3,
+            "naziv": "Nivea",
+            "tip":"Krema",
+            "cena": "455"
+        },
+        {
+            "id": 4,
+            "naziv": "Dove",
+            "tip":"Kupka",
+            "cena": "530"
+        }
+    ],
+    "hrana": [
+        {
+            "id": 1,
+            "naziv": "Jabuke",
+            "tip":"Voce",
+            "cena": "80"
+        },
+        {
+            "id": 2,
+            "naziv": "Plazma",
+            "tip":"Keks",
+            "cena": "140"
+        },
+        {
+            "id": 3,
+            "naziv": "Balans",
+            "tip":"Jogurt",
+            "cena": "50"
+        },
+        {
+            "id": 4,
+            "naziv": "Zlatiborac",
+            "tip":"Pecenica",
+            "cena": "160"
+        }
+    ],
+    "lokacija": [
+        {
+            "id": 1,
+            "lokacija": "Aleksandra Medvedeva",
+            "vreme": "20 minuta"
+        },
+        {
+            "id": 2,
+            "lokacija": "Mokranjceva",
+            "vreme": "20 minuta"
+        },
+        {
+            "id": 3,
+            "lokacija": "Bulevar Nemanjica",
+            "vreme": "10 minuta"
+        },
+        {
+            "id": 4,
+            "lokacija": "Zetska",
+            "vreme": "5 minuta"
+        }
+    ],
+    "pice": [
+        {
+            "id": 1,
+            "naziv": "Coca cola",
+            "cena": "80"
+        },
+        {
+            "id": 2,
+            "naziv": "Knjaz Milos",
+            "cena": "40"
+        },
+        {
+            "id": 3,
+            "naziv": "Fanta",
+            "cena": "90"
+        },
+        {
+            "id": 4,
+            "naziv": "Nektar",
+            "cena": "100"
+        }
+    ]
+
+}

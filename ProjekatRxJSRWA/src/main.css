@@ -1,0 +1,34 @@
+body{
+    display: flex;
+}
+
+.HranaDiv{
+    display: flex;
+    float: left;
+    width: 20%;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.PiceDiv{
+    display: flex;
+    float: left;
+    width: 20%;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.HigijenaDiv{
+    display: flex;
+    float: left;
+    width: 20%;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.LokacijaDiv{
+    display: flex;
+    width: auto;
+    max-width: 80px;
+    flex: 1;
+}
