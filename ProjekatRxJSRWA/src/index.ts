@@ -17,3 +17,4 @@ hrana.prikazHrane(document.body, naruciService);
 pice.prikazPica(document.body, naruciService);
 higijena.prikazHigijene(document.body, naruciService);
 lokacija.prikazLokacije(document.body, naruciService);
+naruciService.kupi(naruci, document.body);

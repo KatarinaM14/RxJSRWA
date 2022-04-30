@@ -1,8 +1,9 @@
-import { merge, Observable } from "rxjs";
+import { map, merge, Observable } from "rxjs";
 import { Higijena } from "../models/higijena";
 import { Hrana } from "../models/hrana";
 import { Lokacija } from "../models/lokacija";
 import { Pice } from "../models/pice";
+import { NaruciPrikaz } from "../Prikaz/naruciPrikaz";
 import { HigijenaService } from "./higijenaService";
 import { HranaService } from "./hranaService";
 import { LokacijaService } from "./lokacijaService";
@@ -40,5 +41,14 @@ export class NaruciService {
 
     kreirajPiceObservable(piceBtn: HTMLButtonElement){
         this.piceObservable = this.piceService.piceOnButtonClick(piceBtn);
+    }
+
+    kupi(naruci: NaruciPrikaz, host: HTMLElement) {
+        merge(
+            this.hranaObservable.pipe(map((hrana) => naruci.naruciHranu(hrana))),
+            this.piceObservable.pipe(map((pice) => naruci.naruciPice(pice))),
+            this.higijenaObservable.pipe(map((higijena) => naruci.naruciHigijenu(higijena))),
+            this.lokacijaObservable.pipe(map((lokacija) => naruci.dodajLokaciju(lokacija)))
+        ).subscribe(() => naruci.prikaziNarudzbinu(host));
     }
 }

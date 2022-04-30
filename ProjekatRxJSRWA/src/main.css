@@ -3,7 +3,7 @@ body{
 }
 
 .HranaDiv{
-    display: flex;
+    display: block;
     float: left;
     width: 20%;
     height: 100px;
@@ -11,7 +11,7 @@ body{
     margin-left: 10px;
 }
 .PiceDiv{
-    display: flex;
+    display: block;
     float: left;
     width: 20%;
     height: 100px;
@@ -19,7 +19,7 @@ body{
     margin-left: 10px;
 }
 .HigijenaDiv{
-    display: flex;
+    display: block;
     float: left;
     width: 20%;
     height: 100px;
@@ -27,8 +27,25 @@ body{
     margin-left: 10px;
 }
 .LokacijaDiv{
-    display: flex;
+    display: block;
     width: auto;
     max-width: 80px;
     flex: 1;
 }
+.LokacijaInput
+{
+    display: block;
+    width: auto;
+    max-width: 80px;
+    flex: 1;
+}
+.Narudzbina
+{
+    display: block;
+    float:  left;
+    width: 20%;
+    margin-top: 10px;
+    margin-right: 10px;
+    height: fit-content;
+}
+

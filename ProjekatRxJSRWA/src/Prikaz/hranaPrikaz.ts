@@ -30,7 +30,11 @@ export class HranaPrikaz{
 
             const lbl = document.createElement("label");
             lbl.className = "lblHranaNaziv";
+            lbl.innerHTML = `${naziv}`;
             hranaDiv.appendChild(lbl);
+
+
+            hranaDiv.appendChild(document.createElement("br"));
         });
 
         const hranaBtn = document.createElement("button");

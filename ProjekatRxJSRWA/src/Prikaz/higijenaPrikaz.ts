@@ -31,7 +31,10 @@ export class HigijenaPrikaz{
 
             const lbl = document.createElement("label");
             lbl.className = "lblHigijenaNaziv";
+            lbl.innerHTML = `${naziv}`;
             higijenaDiv.appendChild(lbl);
+
+            higijenaDiv.appendChild(document.createElement("br"));
 
         });
 

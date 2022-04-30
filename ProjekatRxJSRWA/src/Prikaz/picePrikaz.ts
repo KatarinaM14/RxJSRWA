@@ -28,6 +28,7 @@ export class PicePrikaz{
 
             const lbl = document.createElement("label");
             lbl.className = "lblPice";
+            lbl.innerHTML = `${naziv}`;
             piceDiv.appendChild(lbl);
 
 
