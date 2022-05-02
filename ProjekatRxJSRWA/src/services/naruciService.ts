@@ -1,4 +1,4 @@
-import { map, merge, Observable } from "rxjs";
+import { debounceTime, fromEvent, map, merge, Observable } from "rxjs";
 import { Higijena } from "../models/higijena";
 import { Hrana } from "../models/hrana";
 import { Lokacija } from "../models/lokacija";
@@ -51,4 +51,7 @@ export class NaruciService {
             this.lokacijaObservable.pipe(map((lokacija) => naruci.dodajLokaciju(lokacija)))
         ).subscribe(() => naruci.prikaziNarudzbinu(host));
     }
+
+
+   
 }

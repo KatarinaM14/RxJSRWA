@@ -12,9 +12,27 @@ const lokacija = new LokacijaPrikaz();
 const naruci = new NaruciPrikaz();
 const naruciService = new NaruciService();
 
+let glavniDivHrana = document.createElement("div");
+glavniDivHrana.className = "GlavniDivHrana";
+document.body.appendChild(glavniDivHrana);
+hrana.prikazHrane(glavniDivHrana, naruciService);
 
-hrana.prikazHrane(document.body, naruciService);
-pice.prikazPica(document.body, naruciService);
-higijena.prikazHigijene(document.body, naruciService);
-lokacija.prikazLokacije(document.body, naruciService);
-naruciService.kupi(naruci, document.body);
+let glavniDivPice = document.createElement("div");
+glavniDivPice.className = "GlavniDivPice";
+document.body.appendChild(glavniDivPice);
+pice.prikazPica(glavniDivPice, naruciService);
+
+let glavniDivHigijena = document.createElement("div");
+glavniDivHigijena.className = "GlavniDivHigijena";
+document.body.appendChild(glavniDivHigijena);
+higijena.prikazHigijene(glavniDivHigijena, naruciService);
+
+let glavniDivLokacija = document.createElement("div");
+glavniDivLokacija.className = "GlavniDivLokacija";
+document.body.appendChild(glavniDivLokacija);
+lokacija.prikazLokacije(glavniDivLokacija, naruciService);
+
+let glavniDivNaruci = document.createElement("div");
+glavniDivNaruci.className = "GlavniDivNaruci";
+document.body.appendChild(glavniDivNaruci);
+naruciService.kupi(naruci, glavniDivNaruci);

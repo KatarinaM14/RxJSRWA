@@ -17,26 +17,29 @@ export class PicePrikaz{
         piceLbl.className = "PiceLbl";
         piceDiv.appendChild(piceLbl);
 
+        
         this.nazivPica.forEach((naziv, index) =>{
+            let divRBtnName = document.createElement("div");
             const piceRadioBtn = document.createElement("input");
             piceRadioBtn.type = "radio";
             piceRadioBtn.name = "Pice";
             piceRadioBtn.className = "PiceRadioBtn";
             piceRadioBtn.value = `${naziv}`;
             piceRadioBtn.id = `${index}`;
-            piceDiv.appendChild(piceRadioBtn);
+            divRBtnName.appendChild(piceRadioBtn);
 
             const lbl = document.createElement("label");
             lbl.className = "lblPice";
             lbl.innerHTML = `${naziv}`;
-            piceDiv.appendChild(lbl);
+            divRBtnName.appendChild(lbl);
 
 
-            piceDiv.appendChild(document.createElement("br"));
+            piceDiv.appendChild(divRBtnName);
         });
 
         const piceBtn = document.createElement("button");
-        piceBtn.innerHTML = "Naruci pice";
+        piceBtn.innerHTML = "Dodaj u korpu";
+        piceBtn.className = "Button";
         piceDiv.appendChild(piceBtn);
 
         host.appendChild(piceDiv);

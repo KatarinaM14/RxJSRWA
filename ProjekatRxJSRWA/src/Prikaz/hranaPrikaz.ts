@@ -20,25 +20,27 @@ export class HranaPrikaz{
         hranaDiv.appendChild(hranaLbl);
     
         this.nazivHrana.forEach((naziv, index) => {
+            let divRBtnName = document.createElement("div");
             const hranaRadioBtn = document.createElement("input");
             hranaRadioBtn.type= "radio";
             hranaRadioBtn.name = "Hrana";
             hranaRadioBtn.className = "HranaRadioBtn";
             hranaRadioBtn.value = `${naziv}`;
             hranaRadioBtn.id = `${index}`;
-            hranaDiv.appendChild(hranaRadioBtn);
+            divRBtnName.appendChild(hranaRadioBtn);
 
             const lbl = document.createElement("label");
             lbl.className = "lblHranaNaziv";
             lbl.innerHTML = `${naziv}`;
-            hranaDiv.appendChild(lbl);
+            divRBtnName.appendChild(lbl);
 
 
-            hranaDiv.appendChild(document.createElement("br"));
+            hranaDiv.appendChild(divRBtnName);
         });
 
         const hranaBtn = document.createElement("button");
-        hranaBtn.innerHTML = "Naruci hranu";
+        hranaBtn.className = "Button";
+        hranaBtn.innerHTML = "Dodaj u korpu";
         hranaDiv.appendChild(hranaBtn);
 
         host.appendChild(hranaDiv);

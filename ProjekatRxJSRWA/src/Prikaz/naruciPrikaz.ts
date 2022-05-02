@@ -1,4 +1,4 @@
-import { fromEvent } from "rxjs";
+import { debounceTime, delay, fromEvent, map } from "rxjs";
 import { Higijena } from "../models/higijena";
 import { Hrana } from "../models/hrana";
 import { Lokacija } from "../models/lokacija";
@@ -91,7 +91,7 @@ export class NaruciPrikaz{
     prikaziHranu(host: HTMLElement){
 
         const tipHrane = document.createElement("div");
-        tipHrane.innerHTML = "Hrana: " + this.hrana.tip;
+        tipHrane.innerHTML = "Hrana: " + this.hrana.naziv;
         tipHrane.className = "Hrana";
         host.appendChild(tipHrane);
 
@@ -147,10 +147,18 @@ export class NaruciPrikaz{
         dugme.className = "dugmeKupi";
         host.appendChild(dugme);
 
-        fromEvent(dugme, "click").subscribe(() => this.refreshKupovina());
+        var vreme = this.lokacija.vreme.split(" ", 1);
+        let vr = parseInt(vreme[0]);
+        console.log(vr);
+
+        fromEvent(dugme, "click")
+             .pipe(delay(parseInt(vreme[0])),
+             map(() => this.obavestiKorisnikaODostavi()))
+             .subscribe(() => this.refreshKupovina());
     }
 
     refreshKupovina(){
+        console.log("Refresh");
         this.higijena = null;
         this.pice = null;
         this.hrana = null;
@@ -159,4 +167,80 @@ export class NaruciPrikaz{
         this.cenaHrane =0;
         this.cenaPica = 0;
     }
+
+    obavestiKorisnikaODostavi(){
+           
+        let porukaDiv = document.createElement("div");
+        porukaDiv.className = "PorukaDiv";
+        document.body.appendChild(porukaDiv);
+
+
+       let lblPoruka1 = document.createElement("label");
+       lblPoruka1.className = "LblPoruka";
+       lblPoruka1.innerHTML = "Vasa kupovina je isporucena.";
+       porukaDiv.appendChild(lblPoruka1);
+
+       let lblPoruka2 = document.createElement("label");
+       lblPoruka2.className = "LblPoruka";
+       lblPoruka2.innerHTML = "Molimo Vas da nam odgovorite da li ste zadvoljni isporukom.";
+       porukaDiv.appendChild(lblPoruka2);
+
+        let porukaInput = document.createElement("input");
+        porukaInput.className = "PorukaInput";
+        porukaDiv.appendChild(porukaInput);
+
+
+
+       
+
+        fromEvent(porukaInput, "input")
+                  .pipe(
+                      debounceTime(500),
+                      map((ev: InputEvent) =>(<HTMLInputElement>ev.target).value )
+                  ).subscribe(poruka => this.ispitajPoruku(poruka));
+    
+
+ 
+    }
+
+      ispitajPoruku(poruka: String){
+
+        console.log(poruka);
+        if("Zadovoljan sam isporukom" === poruka || "Zadovoljna sam isporukom" === poruka){
+            let porukaDiv = document.querySelector(".PorukaDiv");
+
+            let poslednjaPoruka = document.createElement("label");
+            poslednjaPoruka.className = "PoslednjaPoruka";
+            poslednjaPoruka.innerHTML = "Zadovoljni kupci su nas prioritet";
+            porukaDiv.appendChild(poslednjaPoruka);
+        }
+        else if("Nisam zadovoljan isporukom" == poruka || "Nisam zadovoljna isporukom" == poruka){
+            let porukaDiv = document.querySelector(".PorukaDiv");
+
+            let poslednjaPoruka = document.createElement("label");
+            poslednjaPoruka.className = "PoslednjaPoruka";
+            poslednjaPoruka.innerHTML = "Ukazite nam na probleme koje ste imali prilikom dostave kako do istih ne bi doslo ubuduce";
+            porukaDiv.appendChild(poslednjaPoruka);
+
+
+            let porukaInput = document.createElement("input");
+            porukaInput.className = "PorukaInput";
+            porukaDiv.appendChild(porukaInput);
+
+            fromEvent(porukaInput, "input")
+            .pipe(
+                debounceTime(5000),
+                map((ev: InputEvent) =>(<HTMLInputElement>ev.target).value )
+            ).subscribe(poruka => this.poslednjaPoruka());
+        }
+    }
+
+    poslednjaPoruka() {
+        let porukaDiv = document.querySelector(".PorukaDiv");
+        let poslednjaPoruka = document.createElement("label");
+        poslednjaPoruka.className = "PoslednjaPoruka";
+        poslednjaPoruka.innerHTML = "Uzecemo vase primedbe u obzir!";
+        porukaDiv.appendChild(poslednjaPoruka);
+    }
 }
+ 

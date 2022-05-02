@@ -20,26 +20,28 @@ export class HigijenaPrikaz{
 
 
         this.nazivHigijene.forEach((naziv, index) => {
+            let divRBtnName = document.createElement("div");
             const higijenaRadioBtn = document.createElement("input");
             higijenaRadioBtn.type = "radio";
             higijenaRadioBtn.name = "Higijena";
             higijenaRadioBtn.className = "HigijenaRadioBtn";
             higijenaRadioBtn.value = `${naziv}`;
             higijenaRadioBtn.id = `${index}`;
-            higijenaDiv.appendChild(higijenaRadioBtn);
+            divRBtnName.appendChild(higijenaRadioBtn);
 
 
             const lbl = document.createElement("label");
             lbl.className = "lblHigijenaNaziv";
             lbl.innerHTML = `${naziv}`;
-            higijenaDiv.appendChild(lbl);
+            divRBtnName.appendChild(lbl);
 
-            higijenaDiv.appendChild(document.createElement("br"));
+            higijenaDiv.appendChild(divRBtnName);
 
         });
 
         const higijenaBtn = document.createElement("button");
-        higijenaBtn.innerHTML = "Naruci higijenu";
+        higijenaBtn.innerHTML = "Dodaj u korpu";
+        higijenaBtn.className = "Button";
         higijenaDiv.appendChild(higijenaBtn);
 
         host.appendChild(higijenaDiv);
