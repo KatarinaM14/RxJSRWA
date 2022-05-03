@@ -2,6 +2,7 @@ body{
     display: flex;
     flex-direction: column;
     
+    
 }
 .GlavniDivHrana, .GlavniDivPice,
 .GlavniDivHigijena, .GlavniDivLokacija,
@@ -15,7 +16,7 @@ body{
     display: flex;
     float: left;
      justify-content: space-around;
-    height: 100px;
+    height: 140px;
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -23,7 +24,7 @@ body{
     display: flex;
     float: left;
     justify-content: space-around;
-    height: 100px;
+    height: 140px;
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -31,7 +32,7 @@ body{
     display: flex;
     float: left;
     justify-content: space-around;
-    height: 100px;
+    height: 140px;
     margin-top: 10px;
     margin-left: 10px;
 }
@@ -55,7 +56,7 @@ body{
 {
     display: flex;
     flex-direction: column;
-    
+   
 }
 .Button, .dugmeKupi
 {
@@ -66,9 +67,106 @@ body{
 {
     display: flex;
     flex-direction: column;
-
+    
 }
 .PorukaInput
 {
     width: 250px;
+}
+.SlikaJabuke
+{
+    display: flex;
+    background-image: url("https://www.veletrznica.co.rs/media/djcatalog2/images/item/0/jabuka-sifra.jpg");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaPlazme
+{
+    display: flex;
+    background-image: url("https://www.ediskont.rs/uploads/store/products/images/plazma-keks-bambi-150g-1200-618bb6ab6ba51.webp");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+
+.SlikaBalansa
+{
+    display: flex;
+    background-image: url("https://d3el976p2k4mvu.cloudfront.net/medias/sys_master/h36/hdb/8837362188318.jpg?buildNumber=1ec64637e414683b1b027bda904064327c0bd1b3c1ba88db70663391de2f03dc");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaZlatiborca
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/352/352104295_1l.jpg?1620900988");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaCocaCole
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/340/340024776_1l.jpg?1548695457");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaVode
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/470/470104840_1l.jpg?1540379564");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaFante
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/342/342025572_1l.jpg?1532949106");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaNektara
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/315/315082835_1l.jpg?1558357862");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaColgate
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/512/512049105_1l.jpg?1648808121");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaRexona
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/530/530106413_1.jpg?1500007597");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaNivea
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/517/517055901_1l.jpg?1500006707");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+}
+.SlikaDove
+{
+    display: flex;
+    background-image: url("https://online.idea.rs/images/products/530/530106058_1l.jpg?1500007550");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
 }

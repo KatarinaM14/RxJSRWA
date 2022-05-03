@@ -19,6 +19,7 @@ export class PicePrikaz{
 
         
         this.nazivPica.forEach((naziv, index) =>{
+            let proizvod = document.createElement("div");
             let divRBtnName = document.createElement("div");
             const piceRadioBtn = document.createElement("input");
             piceRadioBtn.type = "radio";
@@ -34,7 +35,34 @@ export class PicePrikaz{
             divRBtnName.appendChild(lbl);
 
 
-            piceDiv.appendChild(divRBtnName);
+            proizvod.appendChild(divRBtnName);
+
+            if(index == 0)
+            {
+                let slikaCocaCole = document.createElement("div");
+                slikaCocaCole.className = "SlikaCocaCole";
+                proizvod.appendChild(slikaCocaCole);
+            }
+            else if(index==1)
+            {
+                let slikaVode= document.createElement("div");
+                slikaVode.className = "SlikaVode";
+                proizvod.appendChild(slikaVode);
+            }
+            else if(index==2)
+            {
+                let slikaFante = document.createElement("div");
+                slikaFante.className = "SlikaFante";
+                proizvod.appendChild(slikaFante);
+            }
+            else if(index==3)
+            {
+                let slikaNektara = document.createElement("div");
+                slikaNektara.className = "SlikaNektara";
+                proizvod.appendChild(slikaNektara);
+            }
+
+            piceDiv.appendChild(proizvod);
         });
 
         const piceBtn = document.createElement("button");

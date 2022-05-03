@@ -20,6 +20,7 @@ export class HigijenaPrikaz{
 
 
         this.nazivHigijene.forEach((naziv, index) => {
+            let proizvod = document.createElement("div");
             let divRBtnName = document.createElement("div");
             const higijenaRadioBtn = document.createElement("input");
             higijenaRadioBtn.type = "radio";
@@ -35,7 +36,34 @@ export class HigijenaPrikaz{
             lbl.innerHTML = `${naziv}`;
             divRBtnName.appendChild(lbl);
 
-            higijenaDiv.appendChild(divRBtnName);
+            proizvod.appendChild(divRBtnName);
+
+            if(index == 0)
+            {
+                let slikaColgate = document.createElement("div");
+                slikaColgate.className = "SlikaColgate";
+                proizvod.appendChild(slikaColgate);
+            }
+            else if(index==1)
+            {
+                let slikaRexona= document.createElement("div");
+                slikaRexona.className = "SlikaRexona";
+                proizvod.appendChild(slikaRexona);
+            }
+            else if(index==2)
+            {
+                let slikaNivea = document.createElement("div");
+                slikaNivea.className = "SlikaNivea";
+                proizvod.appendChild(slikaNivea);
+            }
+            else if(index==3)
+            {
+                let slikaDove = document.createElement("div");
+                slikaDove.className = "SlikaDove";
+                proizvod.appendChild(slikaDove);
+            }
+
+            higijenaDiv.appendChild(proizvod);
 
         });
 

@@ -1,6 +1,8 @@
 import { HranaService } from "../services/hranaService";
 import { NaruciService } from "../services/naruciService";
 
+
+
 export class HranaPrikaz{
     nazivHrana = ["Jabuke", "Plazma", "Balans", "Zlatiborac"];
     hranaService: HranaService;
@@ -13,13 +15,14 @@ export class HranaPrikaz{
     prikazHrane(host: HTMLElement, naruci: NaruciService) {
         let hranaDiv = document.createElement("div");
         hranaDiv.className = "HranaDiv";
-    
+
         const hranaLbl = document.createElement("label");
         hranaLbl.innerHTML = "Hrana: ";
         hranaLbl.className = "HranaLbl";
         hranaDiv.appendChild(hranaLbl);
     
         this.nazivHrana.forEach((naziv, index) => {
+            let proizvod = document.createElement("div");
             let divRBtnName = document.createElement("div");
             const hranaRadioBtn = document.createElement("input");
             hranaRadioBtn.type= "radio";
@@ -35,7 +38,34 @@ export class HranaPrikaz{
             divRBtnName.appendChild(lbl);
 
 
-            hranaDiv.appendChild(divRBtnName);
+            proizvod.appendChild(divRBtnName);
+
+            if(index == 0)
+            {
+                let slikaJabuke = document.createElement("div");
+                slikaJabuke.className = "SlikaJabuke";
+                proizvod.appendChild(slikaJabuke);
+            }
+            else if(index==1)
+            {
+                let slikaPlazme = document.createElement("div");
+                slikaPlazme.className = "SlikaPlazme";
+                proizvod.appendChild(slikaPlazme);
+            }
+            else if(index==2)
+            {
+                let slikaBalansa = document.createElement("div");
+                slikaBalansa.className = "SlikaBalansa";
+                proizvod.appendChild(slikaBalansa);
+            }
+            else if(index==3)
+            {
+                let slikaZlatiborca = document.createElement("div");
+                slikaZlatiborca.className = "SlikaZlatiborca";
+                proizvod.appendChild(slikaZlatiborca);
+            }
+
+            hranaDiv.appendChild(proizvod);
         });
 
         const hranaBtn = document.createElement("button");
@@ -45,9 +75,8 @@ export class HranaPrikaz{
 
         host.appendChild(hranaDiv);
 
+
         naruci.kreirajHranaObservable(hranaBtn);
-
-
 
     }
 }

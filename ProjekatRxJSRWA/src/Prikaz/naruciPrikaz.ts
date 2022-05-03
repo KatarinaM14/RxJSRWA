@@ -158,7 +158,7 @@ export class NaruciPrikaz{
     }
 
     refreshKupovina(){
-        console.log("Refresh");
+      
         this.higijena = null;
         this.pice = null;
         this.hrana = null;
@@ -205,7 +205,6 @@ export class NaruciPrikaz{
 
       ispitajPoruku(poruka: String){
 
-        console.log(poruka);
         if("Zadovoljan sam isporukom" === poruka || "Zadovoljna sam isporukom" === poruka){
             let porukaDiv = document.querySelector(".PorukaDiv");
 
@@ -231,7 +230,7 @@ export class NaruciPrikaz{
             .pipe(
                 debounceTime(5000),
                 map((ev: InputEvent) =>(<HTMLInputElement>ev.target).value )
-            ).subscribe(poruka => this.poslednjaPoruka());
+            ).subscribe(() => this.poslednjaPoruka());
         }
     }
 
