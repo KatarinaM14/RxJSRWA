@@ -1,8 +1,8 @@
 import { debounce, debounceTime, from, fromEvent, map, Observable, switchMap } from "rxjs";
 import { Hrana } from "../models/hrana";
+import { API_URL } from "../constants";
 
-
-const API_URL = "http://localhost:3000";
+//const API_URL = "http://localhost:3000";
 
 export class HranaService {
     getFoodObservableById(id: number) : Observable<Hrana>{

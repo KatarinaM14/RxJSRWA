@@ -1,7 +1,8 @@
 import { debounceTime, from, fromEvent, map, Observable, switchMap } from "rxjs";
 import { Pice } from "../models/pice";
+import { API_URL } from "../constants";
 
-const API_URL = "http://localhost:3000";
+//const API_URL = "http://localhost:3000";
 
 export class PiceService{
     getDrinkObservableById(id: number): Observable<Pice>{

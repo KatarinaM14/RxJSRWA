@@ -3,6 +3,7 @@ import { Higijena } from "../models/higijena";
 import { Hrana } from "../models/hrana";
 import { Lokacija } from "../models/lokacija";
 import { Pice } from "../models/pice";
+import { CONSTANTS } from "../constants";
 
 export class NaruciPrikaz{
 
@@ -147,7 +148,7 @@ export class NaruciPrikaz{
         dugme.className = "dugmeKupi";
         host.appendChild(dugme);
 
-        var vreme = this.lokacija.vreme.split(" ", 1);
+        var vreme = this.lokacija.vreme.split(" ");
         let vr = parseInt(vreme[0]);
         console.log(vr);
 
@@ -177,12 +178,12 @@ export class NaruciPrikaz{
 
        let lblPoruka1 = document.createElement("label");
        lblPoruka1.className = "LblPoruka";
-       lblPoruka1.innerHTML = "Vasa kupovina je isporucena.";
+       lblPoruka1.innerHTML = CONSTANTS.ISPORUCENA_KUPOVINA;
        porukaDiv.appendChild(lblPoruka1);
 
        let lblPoruka2 = document.createElement("label");
        lblPoruka2.className = "LblPoruka";
-       lblPoruka2.innerHTML = "Molimo Vas da nam odgovorite da li ste zadvoljni isporukom.";
+       lblPoruka2.innerHTML = CONSTANTS.OCENA_ISPORUKE;
        porukaDiv.appendChild(lblPoruka2);
 
         let porukaInput = document.createElement("input");
@@ -205,20 +206,20 @@ export class NaruciPrikaz{
 
       ispitajPoruku(poruka: String){
 
-        if("Zadovoljan sam isporukom" === poruka || "Zadovoljna sam isporukom" === poruka){
+        if(CONSTANTS.ZADOVOLJAN_ISKPORUKOM === poruka || CONSTANTS.ZADOVOLJNA_ISKPORUKOM === poruka){
             let porukaDiv = document.querySelector(".PorukaDiv");
 
             let poslednjaPoruka = document.createElement("label");
             poslednjaPoruka.className = "PoslednjaPoruka";
-            poslednjaPoruka.innerHTML = "Zadovoljni kupci su nas prioritet";
+            poslednjaPoruka.innerHTML = CONSTANTS.ZADOVOLJAN_KUPOVINOM;//"Zadovoljni kupci su nas prioritet";
             porukaDiv.appendChild(poslednjaPoruka);
         }
-        else if("Nisam zadovoljan isporukom" == poruka || "Nisam zadovoljna isporukom" == poruka){
+        else if(CONSTANTS.NEZADOVOLJAN_ISKPORUKOM  == poruka || CONSTANTS.NEZADOVOLJNA_ISKPORUKOM == poruka){
             let porukaDiv = document.querySelector(".PorukaDiv");
 
             let poslednjaPoruka = document.createElement("label");
             poslednjaPoruka.className = "PoslednjaPoruka";
-            poslednjaPoruka.innerHTML = "Ukazite nam na probleme koje ste imali prilikom dostave kako do istih ne bi doslo ubuduce";
+            poslednjaPoruka.innerHTML = CONSTANTS.UKAZITE_NAM_NA_PROBLEME;
             porukaDiv.appendChild(poslednjaPoruka);
 
 
@@ -238,7 +239,7 @@ export class NaruciPrikaz{
         let porukaDiv = document.querySelector(".PorukaDiv");
         let poslednjaPoruka = document.createElement("label");
         poslednjaPoruka.className = "PoslednjaPoruka";
-        poslednjaPoruka.innerHTML = "Uzecemo vase primedbe u obzir!";
+        poslednjaPoruka.innerHTML = CONSTANTS.RAZMOTRICEMO_PRIMEDBE;
         porukaDiv.appendChild(poslednjaPoruka);
     }
 }

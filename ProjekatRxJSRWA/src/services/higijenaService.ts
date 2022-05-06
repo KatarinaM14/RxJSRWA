@@ -1,7 +1,8 @@
 import { debounce, debounceTime, from, fromEvent, map, Observable, switchMap } from "rxjs";
 import { Higijena } from "../models/higijena";
+import { API_URL } from "../constants";
 
-const API_URL = "http://localhost:3000";
+//const API_URL = "http://localhost:3000";
 
 export class HigijenaService{
     getHygieneObservableById(id : number) : Observable<Higijena>{

@@ -1,7 +1,8 @@
 import { debounceTime, filter, from, fromEvent, map, Observable, switchMap } from "rxjs";
 import { Lokacija } from "../models/lokacija";
+import { API_URL } from "../constants";
 
-const API_URL = "http://localhost:3000";
+//const API_URL = "http://localhost:3000";
 
 export class LokacijaService{
     getLocationObservableById(id: number): Observable<Lokacija>{
