@@ -1,4 +1,4 @@
-import { debounceTime, delay, fromEvent, map } from "rxjs";
+import { debounceTime, delay, from, fromEvent, interval, map, reduce, take, takeUntil } from "rxjs";
 import { Higijena } from "../models/higijena";
 import { Hrana } from "../models/hrana";
 import { Lokacija } from "../models/lokacija";
@@ -74,19 +74,40 @@ export class NaruciPrikaz{
 
         this.higijena && this.prikaziHigijenu(kontejner);
 
+
+        from([Number.parseInt(this.cenaHrane.toString()),  Number.parseInt(this.cenaPica.toString()),  Number.parseInt(this.cenaHigijene.toString())])
+            .pipe(
+                //map(() => 0),
+                reduce((acc, val) => acc + val, 0)
+        ).subscribe( sum => this.prikaziCenu(kontejner, sum));
+
+        // const cena = document.createElement("div");
+        // cena.innerHTML = `Cena poruzdbine je: ${
+        //     Number.parseInt(this.cenaHrane.toString()) +
+        //     Number.parseInt(this.cenaPica.toString()) +
+        //     Number.parseInt(this.cenaHigijene.toString())
+        //   }`;
+        //   cena.className = "Cena";
+        //   kontejner.appendChild(cena);
+
+        //   this.lokacija && this.prikaziLokaciju(kontejner);
+
+        //   this.refreshDugme(kontejner);
+
+    }
+
+    prikaziCenu(host: HTMLElement, suma: number){
+        console.log(suma);
         const cena = document.createElement("div");
         cena.innerHTML = `Cena poruzdbine je: ${
-            Number.parseInt(this.cenaHrane.toString()) +
-            Number.parseInt(this.cenaPica.toString()) +
-            Number.parseInt(this.cenaHigijene.toString())
+            suma
           }`;
           cena.className = "Cena";
-          kontejner.appendChild(cena);
+          host.appendChild(cena);
 
-          this.lokacija && this.prikaziLokaciju(kontejner);
+          this.lokacija && this.prikaziLokaciju(host);
 
-          this.refreshDugme(kontejner);
-
+          this.refreshDugme(host);
     }
 
     prikaziHranu(host: HTMLElement){
@@ -149,13 +170,44 @@ export class NaruciPrikaz{
         host.appendChild(dugme);
 
         var vreme = this.lokacija.vreme.split(" ");
-        let vr = parseInt(vreme[0]);
+        var vr = parseInt(vreme[0]);
         console.log(vr);
 
+        let narudzbinaDiv = document.querySelector(".Narudzbina");
+
+        let protekloVremeDiv = document.createElement("div");
+        protekloVremeDiv.className = "ProtekloVremeDiv";
+        let lblVreme = document.createElement("label");
+        lblVreme.className = "ProtekloVremeLbl";
+       // lblVreme.innerHTML = `${x}`;
+        protekloVremeDiv.appendChild(lblVreme);
+        narudzbinaDiv.appendChild(protekloVremeDiv);
+
+
+       // interval(1000).pipe(take(vr)).subscribe((x)=>console.log(x));
+
         fromEvent(dugme, "click")
-             .pipe(delay(parseInt(vreme[0])),
-             map(() => this.obavestiKorisnikaODostavi()))
-             .subscribe(() => this.refreshKupovina());
+            //  .pipe(delay(parseInt(vreme[0])),
+            //  map(() => this.refreshKupovina()))
+            //  .subscribe(() => his.obavestiKorisnikaODostavi());
+
+
+             //.pipe(map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>console.log(x+1))),
+             .pipe(map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>this.protekloVremeOdNarudzbine(x+1))),
+                delay(vr*60000),
+             map(() => this.refreshKupovina()))
+             .subscribe(() => this.obavestiKorisnikaODostavi());
+    }
+
+    protekloVremeOdNarudzbine(x : number){
+        let lblVreme = document.querySelector(".ProtekloVremeLbl");
+
+        //let protekloVremeDiv = document.createElement("div");
+        //protekloVremeDiv.className = "ProtekloVremeDiv";
+        //let lblVreme = document.createElement("label");
+        lblVreme.innerHTML = "Protekao broj minuta od narudzbine: "+`${x}`;
+        //protekloVremeDiv.appendChild(lblVreme);
+        //narudzbinaDiv.appendChild(protekloVremeDiv);
     }
 
     refreshKupovina(){
