@@ -1,4 +1,4 @@
-import { debounceTime, delay, from, fromEvent, interval, map, reduce, take, takeUntil } from "rxjs";
+import { debounceTime, delay, from, fromEvent, interval, map, of, reduce, take, takeUntil, zip } from "rxjs";
 import { Higijena } from "../models/higijena";
 import { Hrana } from "../models/hrana";
 import { Lokacija } from "../models/lokacija";
@@ -175,6 +175,15 @@ export class NaruciPrikaz{
 
         let narudzbinaDiv = document.querySelector(".Narudzbina");
 
+
+        let donacijaDiv = document.createElement("div");
+        donacijaDiv.className = "DonacijaDiv";
+        let lblDonacija = document.createElement("label");
+        lblDonacija.className = "DonacijaLbl";
+       // lblVreme.innerHTML = `${x}`;
+        donacijaDiv.appendChild(lblDonacija);
+        narudzbinaDiv.appendChild(donacijaDiv);
+
         let protekloVremeDiv = document.createElement("div");
         protekloVremeDiv.className = "ProtekloVremeDiv";
         let lblVreme = document.createElement("label");
@@ -182,6 +191,24 @@ export class NaruciPrikaz{
        // lblVreme.innerHTML = `${x}`;
         protekloVremeDiv.appendChild(lblVreme);
         narudzbinaDiv.appendChild(protekloVremeDiv);
+
+        const hranaCena$ = of(this.hrana.cena);
+        const piceCena$ = of(this.pice.cena);
+        const higijrnaaCena$ = of(this.higijena.cena);
+        
+        zip(hranaCena$, piceCena$, higijrnaaCena$, fromEvent(dugme, "click")).pipe(
+            map(([hranaCena, piceCena, higijenaCena, click]) =>
+               /// console.log("Cena hrane:" + hranaCena);
+                //console.log("Cena pica:" + piceCena);
+                //console.log("Cena higijene:" + higijenaCena);
+               // console.log("Click:" + click);
+                 ((Number(hranaCena)+ Number(piceCena)+ Number(higijenaCena))/100)
+                )
+          ).subscribe(x =>{
+            console.log(x); 
+            console.log("Donirali ste kupovinom: " + x);
+            this.donacija(x)
+        });
 
 
        // interval(1000).pipe(take(vr)).subscribe((x)=>console.log(x));
@@ -193,7 +220,9 @@ export class NaruciPrikaz{
 
 
              //.pipe(map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>console.log(x+1))),
-             .pipe(map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>this.protekloVremeOdNarudzbine(x+1))),
+             .pipe(
+              
+            map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>this.protekloVremeOdNarudzbine(x+1))),
                 delay(vr*60000),
              map(() => this.refreshKupovina()))
              .subscribe(() => this.obavestiKorisnikaODostavi());
@@ -208,6 +237,13 @@ export class NaruciPrikaz{
         lblVreme.innerHTML = "Protekao broj minuta od narudzbine: "+`${x}`;
         //protekloVremeDiv.appendChild(lblVreme);
         //narudzbinaDiv.appendChild(protekloVremeDiv);
+    }
+
+    donacija(donirano: number){
+        console.log(donirano);
+
+        let lblDonacija = document.querySelector(".DonacijaLbl");
+        lblDonacija.innerHTML = "Ovom kupovinom ste donirali "+`${donirano}`+"% u humanitarne svrhe.";
     }
 
     refreshKupovina(){
