@@ -12,6 +12,16 @@ const lokacija = new LokacijaPrikaz();
 const naruci = new NaruciPrikaz();
 const naruciService = new NaruciService();
 
+let glavniDivNazivMarketa = document.createElement("div");
+glavniDivNazivMarketa.className = "GlavniDivNazivMarketa";
+document.body.appendChild(glavniDivNazivMarketa);
+let lblNaslovMarketa = document.createElement("label");
+lblNaslovMarketa.className = "LblNazivMarketa";
+lblNaslovMarketa.innerHTML = "BeHuman online market";
+lblNaslovMarketa.style.fontSize= "50px";
+lblNaslovMarketa.style.color = "#51dbad";
+glavniDivNazivMarketa.appendChild(lblNaslovMarketa);
+
 let glavniDivHrana = document.createElement("div");
 glavniDivHrana.className = "GlavniDivHrana";
 document.body.appendChild(glavniDivHrana);
@@ -32,7 +42,11 @@ glavniDivLokacija.className = "GlavniDivLokacija";
 document.body.appendChild(glavniDivLokacija);
 lokacija.prikazLokacije(glavniDivLokacija, naruciService);
 
+let glavniDivPrikaz = document.createElement("div");
+glavniDivPrikaz.className = "GlavniDivPrikaz";
+document.body.appendChild(glavniDivPrikaz);
+
 let glavniDivNaruci = document.createElement("div");
 glavniDivNaruci.className = "GlavniDivNaruci";
-document.body.appendChild(glavniDivNaruci);
+glavniDivPrikaz.appendChild(glavniDivNaruci);
 naruciService.kupi(naruci, glavniDivNaruci);

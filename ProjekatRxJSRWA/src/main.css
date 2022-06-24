@@ -11,6 +11,27 @@ body{
     display: flex;
     flex-direction: column;
 }
+.GlavniDivNaruci
+{
+    margin-left: 20px;
+}
+.DonacijaDiv
+{
+    margin-right: 50px;
+}
+.GlavniDivPrikaz
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.GlavniDivNazivMarketa
+{
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+    min-height: 110px;
+}
 
 .HranaDiv{
     display: flex;
@@ -72,6 +93,16 @@ body{
 .PorukaInput
 {
     width: 250px;
+}
+.SlikaLogaDiv
+{
+    display: flex;
+    background-image: url("https://as1.ftcdn.net/v2/jpg/02/21/60/70/1000_F_221607040_15bfMh9DNhYLz37QCj7nG6GlGmNidYFV.jpg");
+    background-size: cover;   
+    height: 100px;
+    width: 100px; 
+    margin-left: 100px;
+    margin-top: 80px;
 }
 .SlikaJabuke
 {
@@ -169,4 +200,23 @@ body{
     background-size: cover;   
     height: 100px;
     width: 100px; 
+}
+.PorukaDiv
+{
+    display: flex;
+    min-height: 200px;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.Naslov, .Hrana, .CenaHrane, .Pice, .CenaPica, .HigijenaNaziv, .HigijenaCena,
+.Cena, .Lokacija, .VremeDostavljanja, .ProtekloVremeDiv, .LblPooruka, .PoslednjaPoruka
+{
+    min-height: 30px;
+}
+.ProtekloVremeDiv
+{
+    display: flex;
+    align-items: center;
+
 }

@@ -175,14 +175,15 @@ export class NaruciPrikaz{
 
         let narudzbinaDiv = document.querySelector(".Narudzbina");
 
-
+        let glavniDivDonacija = document.querySelector(".GlavniDivPrikaz");
+        
         let donacijaDiv = document.createElement("div");
         donacijaDiv.className = "DonacijaDiv";
         let lblDonacija = document.createElement("label");
         lblDonacija.className = "DonacijaLbl";
        // lblVreme.innerHTML = `${x}`;
         donacijaDiv.appendChild(lblDonacija);
-        narudzbinaDiv.appendChild(donacijaDiv);
+        glavniDivDonacija.appendChild(donacijaDiv);
 
         let protekloVremeDiv = document.createElement("div");
         protekloVremeDiv.className = "ProtekloVremeDiv";
@@ -237,6 +238,9 @@ export class NaruciPrikaz{
         lblVreme.innerHTML = "Protekao broj minuta od narudzbine: "+`${x}`;
         //protekloVremeDiv.appendChild(lblVreme);
         //narudzbinaDiv.appendChild(protekloVremeDiv);
+
+       
+
     }
 
     donacija(donirano: number){
@@ -244,6 +248,11 @@ export class NaruciPrikaz{
 
         let lblDonacija = document.querySelector(".DonacijaLbl");
         lblDonacija.innerHTML = "Ovom kupovinom ste donirali "+`${donirano}`+"% u humanitarne svrhe.";
+
+        let donacijeDiv = document.querySelector(".DonacijaDiv");
+        let slikaLogaDiv = document.createElement("div");
+        slikaLogaDiv.className = "SlikaLogaDiv";
+        donacijeDiv.appendChild(slikaLogaDiv);
     }
 
     refreshKupovina(){
