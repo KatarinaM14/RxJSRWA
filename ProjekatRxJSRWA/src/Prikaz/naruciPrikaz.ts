@@ -77,22 +77,9 @@ export class NaruciPrikaz{
 
         from([Number.parseInt(this.cenaHrane.toString()),  Number.parseInt(this.cenaPica.toString()),  Number.parseInt(this.cenaHigijene.toString())])
             .pipe(
-                //map(() => 0),
                 reduce((acc, val) => acc + val, 0)
         ).subscribe( sum => this.prikaziCenu(kontejner, sum));
 
-        // const cena = document.createElement("div");
-        // cena.innerHTML = `Cena poruzdbine je: ${
-        //     Number.parseInt(this.cenaHrane.toString()) +
-        //     Number.parseInt(this.cenaPica.toString()) +
-        //     Number.parseInt(this.cenaHigijene.toString())
-        //   }`;
-        //   cena.className = "Cena";
-        //   kontejner.appendChild(cena);
-
-        //   this.lokacija && this.prikaziLokaciju(kontejner);
-
-        //   this.refreshDugme(kontejner);
 
     }
 
@@ -116,9 +103,6 @@ export class NaruciPrikaz{
         tipHrane.innerHTML = "Hrana: " + this.hrana.naziv;
         tipHrane.className = "Hrana";
         host.appendChild(tipHrane);
-
-        //const sadrzajHrane = document.createElement("label");
-        //sadrzajHrane.innerHTML = "Sadrzaj: "+ this.hrana.
 
         const cenaHrane = document.createElement("div");
         cenaHrane.innerHTML = "Cena hrane: " + this.hrana.cena;
@@ -199,10 +183,6 @@ export class NaruciPrikaz{
         
         zip(hranaCena$, piceCena$, higijrnaaCena$, fromEvent(dugme, "click")).pipe(
             map(([hranaCena, piceCena, higijenaCena, click]) =>
-               /// console.log("Cena hrane:" + hranaCena);
-                //console.log("Cena pica:" + piceCena);
-                //console.log("Cena higijene:" + higijenaCena);
-               // console.log("Click:" + click);
                  ((Number(hranaCena)+ Number(piceCena)+ Number(higijenaCena))/100)
                 )
           ).subscribe(x =>{
@@ -212,15 +192,9 @@ export class NaruciPrikaz{
         });
 
 
-       // interval(1000).pipe(take(vr)).subscribe((x)=>console.log(x));
+
 
         fromEvent(dugme, "click")
-            //  .pipe(delay(parseInt(vreme[0])),
-            //  map(() => this.refreshKupovina()))
-            //  .subscribe(() => his.obavestiKorisnikaODostavi());
-
-
-             //.pipe(map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>console.log(x+1))),
              .pipe(
               
             map(()=>  interval(60000).pipe(take(vr)).subscribe((x)=>this.protekloVremeOdNarudzbine(x+1))),
@@ -232,15 +206,7 @@ export class NaruciPrikaz{
     protekloVremeOdNarudzbine(x : number){
         let lblVreme = document.querySelector(".ProtekloVremeLbl");
 
-        //let protekloVremeDiv = document.createElement("div");
-        //protekloVremeDiv.className = "ProtekloVremeDiv";
-        //let lblVreme = document.createElement("label");
         lblVreme.innerHTML = "Protekao broj minuta od narudzbine: "+`${x}`;
-        //protekloVremeDiv.appendChild(lblVreme);
-        //narudzbinaDiv.appendChild(protekloVremeDiv);
-
-       
-
     }
 
     donacija(donirano: number){
